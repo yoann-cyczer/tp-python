@@ -1,4 +1,4 @@
-
+import Bibliotheque
 b = Bibliotheque()
 
 # Ajout simple
