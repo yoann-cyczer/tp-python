@@ -1,1 +1,17 @@
-[]
+{
+  "utilisateurs": [
+    "test1"
+  ],
+  "ressources": [
+    {
+      "id": 1,
+      "nom": "robin des bois",
+      "emprunte_par": null
+    },
+    {
+      "id": 2,
+      "nom": "naruto tome1",
+      "emprunte_par": null
+    }
+  ]
+}

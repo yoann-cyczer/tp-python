@@ -27,7 +27,3 @@ class Ressource:
     @staticmethod
     def from_dict(data):
         return Ressource(data["id"], data["nom"], data["emprunte_par"])
-
-    def __str__(self):
-        statut = "Disponible" if self.est_disponible() else f"Empruntée par {self.emprunte_par}"
-        return f"[{self.id}] {self.nom} - {statut}"
