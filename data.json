@@ -1,0 +1,14 @@
+{
+  "utilisateurs": [
+    "test1",
+    "test3",
+    "test2"
+  ],
+  "ressources": [
+    {
+      "id": 1,
+      "nom": "livre",
+      "emprunte_par": "test1"
+    }
+  ]
+}
