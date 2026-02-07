@@ -1,8 +1,8 @@
-from biblioteque import Bibliotheque
+from bibliotheque import Bibliotheque
 
 b = Bibliotheque()
 
-ADMIN_PASSWORD = "admin123"   # tu peux changer le mot de passe ici
+ADMIN_PASSWORD = "admin123"  
 
 def menu_principal():
     print("\n=== MENU PRINCIPAL ===")
@@ -27,15 +27,15 @@ def menu_admin():
     print("6. Voir la liste des ressources")
     print("0. Retour")
 
-# ------------------------------
+
 # BOUCLE PRINCIPALE
-# ------------------------------
+
 
 while True:
     menu_principal()
     choix = input("Choisissez une option : ")
 
-    # --- MODE UTILISATEUR ---
+    #  MODE UTILISATEUR
     if choix == "1":
         while True:
             menu_utilisateur()
@@ -67,7 +67,7 @@ while True:
             else:
                 print("Choix invalide.")
 
-    # --- MODE ADMIN ---
+    #  MODE ADMIN 
     elif choix == "2":
         mdp = input("Mot de passe admin : ")
         if mdp != ADMIN_PASSWORD:
@@ -121,7 +121,7 @@ while True:
             else:
                 print("Choix invalide.")
 
-    # --- QUITTER ---
+    #  QUITTER
     elif choix == "0":
         print("Au revoir.")
         break
