@@ -14,6 +14,11 @@
       "id": 2,
       "nom": "naruto tome1",
       "emprunte_par": null
+    },
+    {
+      "id": 3,
+      "nom": "potter",
+      "emprunte_par": null
     }
   ]
 }

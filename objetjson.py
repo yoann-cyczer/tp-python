@@ -1,7 +1,7 @@
 import json
 
 with open("data.json", "r", encoding="utf-8") as f:
-    data = json.load(f)  # data devient un dict / une liste Python
+    data = json.load(f) 
 
 data["age"] = 31
 data["ville"] = "Paris"

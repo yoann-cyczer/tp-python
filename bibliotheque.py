@@ -38,7 +38,7 @@ class Bibliotheque:
             for r in data.get("ressources", [])
         }
 
-    # ---------- LOGIQUE ----------
+    #  LOGIQUE 
     def ajouter_ressource(self, identifiant, nom):
         if identifiant in self.ressources:
             raise Exception("Une ressource avec cet ID existe déjà.")
