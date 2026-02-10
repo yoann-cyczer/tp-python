@@ -1,5 +1,5 @@
 import customtkinter as ctk
-from biblioteque import Bibliotheque
+from bibliotheque import Bibliotheque
 
 # ============================
 #   CONFIGURATION
