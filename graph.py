@@ -1,20 +1,12 @@
 import customtkinter as ctk
 from bibliotheque import Bibliotheque
 
-# ============================
-#   CONFIGURATION
-# ============================
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
 b = Bibliotheque()
 ADMIN_PASSWORD = "admin123"
-
-
-# ============================
-#   FENÊTRE PRINCIPALE
-# ============================
 
 app = ctk.CTk()
 app.title("Gestion de Bibliothèque")
