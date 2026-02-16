@@ -19,12 +19,12 @@ class Bibliotheque:
             json.dump(data, f, indent=2, ensure_ascii=False)
 
     def charger(self):
-        # Si le fichier n'existe pas → on crée un fichier JSON propre
+        # Si le fichier n'existe pas  on crée un fichier JSON propre
         if not os.path.exists(self.fichier):
             self.sauvegarder()
             return
 
-        # Si le fichier existe mais est vide ou cassé → on réinitialise
+        # Si le fichier existe mais est vide ou cassé  on réinitialise
         try:
             with open(self.fichier, "r", encoding="utf-8") as f:
                 data = json.load(f)

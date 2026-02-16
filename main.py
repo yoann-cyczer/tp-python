@@ -2,8 +2,8 @@ from bibliotheque import Bibliotheque
 
 b = Bibliotheque()
 
-ADMIN_PASSWORD = "admin123"  
-
+ADMIN_PASSWORD = "password"  
+# affichage menu
 def menu_principal():
     print("\n=== MENU PRINCIPAL ===")
     print("1. Mode utilisateur")
