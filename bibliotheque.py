@@ -9,7 +9,7 @@ class Bibliotheque:
         self.utilisateurs = set()
         self.charger()
 
-    # ---------- JSON ----------
+    #   JSON 
     def sauvegarder(self):
         data = {
             "utilisateurs": list(self.utilisateurs),

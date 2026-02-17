@@ -2,20 +2,18 @@ import customtkinter as ctk
 from bibliotheque import Bibliotheque
 
 # Configuration visuelle de l'application
-ctk.set_appearance_mode("white")
-ctk.set_default_color_theme("red")
+ctk.set_appearance_mode("dark")
+ctk.set_default_color_theme("blue")
 
 b = Bibliotheque()  # Instance principale de la bibliothèque
-ADMIN_PASSWORD = "pass"
+ADMIN_PASSWORD = "password"
 
 app = ctk.CTk()
 app.title("Gestion de Bibliothèque")
 app.geometry("500x450")
 
 
-
 # Fenêtre : emprunter une ressource
-
 def fenetre_emprunter():
     win = ctk.CTkToplevel(app)
     win.title("Emprunter une ressource")
@@ -30,7 +28,6 @@ def fenetre_emprunter():
     entry_id.pack()
 
     def valider():
-        # Tente un emprunt et affiche le résultat
         try:
             utilisateur = entry_user.get()
             identifiant = entry_id.get()
@@ -42,9 +39,7 @@ def fenetre_emprunter():
     ctk.CTkButton(win, text="Valider", command=valider).pack(pady=15)
 
 
-
 # Fenêtre : rendre une ressource
-
 def fenetre_rendre():
     win = ctk.CTkToplevel(app)
     win.title("Rendre une ressource")
@@ -55,7 +50,6 @@ def fenetre_rendre():
     entry_id.pack()
 
     def valider():
-        # Tente de rendre la ressource
         try:
             identifiant = entry_id.get()
             b.rendre(identifiant)
@@ -66,9 +60,7 @@ def fenetre_rendre():
     ctk.CTkButton(win, text="Valider", command=valider).pack(pady=15)
 
 
-
 # Fenêtre : afficher les ressources
-
 def fenetre_afficher():
     win = ctk.CTkToplevel(app)
     win.title("Liste des ressources")
@@ -77,21 +69,19 @@ def fenetre_afficher():
     text = ctk.CTkTextbox(win, width=480, height=350)
     text.pack(pady=10)
 
-    # Affichage simple de toutes les ressources
-    for identifiant, data in b.ressources.items():
-        etat = "Disponible" if data["disponible"] else f"Emprunté par {data['emprunteur']}"
-        text.insert("end", f"{identifiant} : {data['nom']} — {etat}\n")
+    # Affichage des ressources
+    for identifiant, r in b.ressources.items():
+        etat = "Disponible" if r.est_disponible() else f"Emprunté par {r.emprunte_par}"
+        text.insert("end", f"{identifiant} : {r.nom} — {etat}\n")
 
 
 # Fenêtre : mode administrateur
-
 def fenetre_admin():
     win = ctk.CTkToplevel(app)
     win.title("Mode Administrateur")
     win.geometry("400x500")
 
     def check_password():
-        # Vérifie le mot de passe admin
         if entry_mdp.get() != ADMIN_PASSWORD:
             lbl_result.configure(text="Mot de passe incorrect", text_color="red")
         else:
@@ -107,7 +97,6 @@ def fenetre_admin():
     lbl_result.pack()
 
     def afficher_menu_admin():
-        # Menu affiché après validation du mot de passe
         frame = ctk.CTkFrame(win)
         frame.pack(pady=20)
 
@@ -126,7 +115,6 @@ def fenetre_admin():
 
 
 # Fenêtres d'ajout / suppression
-
 def fenetre_ajout_user():
     win = ctk.CTkToplevel(app)
     win.title("Ajouter utilisateur")
@@ -137,7 +125,6 @@ def fenetre_ajout_user():
     entry.pack()
 
     def valider():
-        # Ajoute un utilisateur
         nom = entry.get()
         b.ajouter_utilisateur(nom)
         ctk.CTkLabel(win, text="Utilisateur ajouté !", text_color="green").pack(pady=10)
@@ -159,7 +146,6 @@ def fenetre_ajout_ressource():
     entry_nom.pack()
 
     def valider():
-        # Ajoute une ressource
         identifiant = entry_id.get()
         nom = entry_nom.get()
         b.ajouter_ressource(identifiant, nom)
@@ -178,7 +164,6 @@ def fenetre_suppr_user():
     entry.pack()
 
     def valider():
-        # Supprime un utilisateur si présent
         nom = entry.get()
         if nom in b.utilisateurs:
             b.utilisateurs.remove(nom)
@@ -200,7 +185,6 @@ def fenetre_suppr_ressource():
     entry.pack()
 
     def valider():
-        # Supprime une ressource si elle existe
         identifiant = entry.get()
         if identifiant in b.ressources:
             del b.ressources[identifiant]
@@ -220,14 +204,11 @@ def fenetre_liste_users():
     text = ctk.CTkTextbox(win, width=380, height=250)
     text.pack(pady=10)
 
-    # Affiche simplement tous les utilisateurs
     for u in b.utilisateurs:
         text.insert("end", f"- {u}\n")
 
 
-
 # Menu principal
-
 ctk.CTkLabel(app, text="Gestion de Bibliothèque", font=("Arial", 22)).pack(pady=20)
 
 ctk.CTkButton(app, text="Mode utilisateur", width=250,
@@ -238,6 +219,7 @@ ctk.CTkButton(app, text="Mode administrateur", width=250,
 
 ctk.CTkButton(app, text="Quitter", width=250,
               command=app.destroy).pack(pady=20)
+
 
 # Fenêtre utilisateur
 def fenetre_utilisateur():
